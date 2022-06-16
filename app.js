@@ -11,8 +11,8 @@ let baseURL = 'https://steganography-2022.herokuapp.com';
 let content = document.querySelector('#form');
 let tabs = document.querySelectorAll('.tab');
 let msg = document.querySelector('#msg-col');
-let decodeMsg = document.querySelector('#decode-msg')
 let msgInput = document.querySelector('#msg');
+let downloadDecode = document.querySelector('#download-decode');
 let isEmbedMode = false;
 let sth = null, blob = null;
 let embedEle = Array.from(document.querySelectorAll('.embed').values())
@@ -80,8 +80,9 @@ submitBtn.onclick = e => {
 						
 						if (sth) {
 							blob = await sth.json();
+							blob = new Blob([blob.text], { type: "text/plain;charset=utf-8" });
+							downloadDecode.href = URL.createObjectURL(blob);
 							console.log(blob);
-							decodeMsg.innerText = blob.text;
 							success.click();
 						}
 						else {

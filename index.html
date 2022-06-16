@@ -76,7 +76,7 @@
         <div class="row mt-2" style="padding-right: 0px">
 			<label for="formFile" class="form-label col-form-label col-2" >Upload your image</label>
 			<div class="col-10 px-0" style="padding-top: 6px;">		
-				<input class="form-control" type="file" accept="image/*" id="formFile" name="file" required>
+				<input class="form-control" type="file" accept=".jpg,.jpeg,.png" id="formFile" name="file" required>
 			</div>
 		</div>
 		<label for="channel" class="form-label mt-2">Configuration</label>		
@@ -87,7 +87,7 @@
                 </span>
                 <select class="form-select" id="channel" name="channel" required>
                     <option value="i" selected>Channel I only</option>
-					<option value="si">Channel S and Channel I</option>
+					<option value="si" disabled>Channel S and Channel I</option>
                 </select>
             </div>
         </div>
@@ -98,8 +98,8 @@
                 </span>
                 <select class="form-select" id="bits" name="bits" required>
                     <option value="1" selected>1 bit/byte</option>
-					<option value="2">2 bits/byte</option>
-					<option value="3">3 bits/byte</option>
+					<option value="2" disabled>2 bits/byte</option>
+					<option value="3" disabled>3 bits/byte</option>
                 </select>
             </div>
         </div>
@@ -109,7 +109,7 @@
                 <span class="input-group-text">
                     <label for="pwd">Password</label>
                 </span>
-                <input type="text" class="form-control" placeholder="A message to be hidden" id="pwd" name="key">
+                <input type="text" class="form-control" placeholder="A password to encrypt your message" id="pwd" name="key">
 			</div>
 		</div>		
 		
@@ -118,7 +118,7 @@
                 <span class="input-group-text">
                     <label for="msg">Message</label>
                 </span>
-                <input type="text" class="form-control" placeholder="A message to be hidden" id="msg" name="text" required>
+                <textarea type="text" class="form-control" placeholder="A message to be hidden" id="msg" name="text" rows="5" required></textarea>
 				<div class="invalid-feedback">Please provide the secret message.</div>
             </div>
         </div>
@@ -150,7 +150,7 @@
                     You can download it <a id="download" download>here</a>.
                 </div>
 				<div class="modal-body decode" style="display: none">
-                    Secret message: <span id="decode-msg"><span>
+                    Secret message: <a id="download-decode">click here</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
