@@ -8,6 +8,7 @@ let failure = document.querySelector('#failure-modal-toggler');
 let xClose = document.querySelector('#xCloseSuccess');
 let download = document.querySelector('#download');
 let baseURL = 'https://steganography-2022.herokuapp.com';
+//let baseURL = 'http://127.0.0.1:40002'
 let content = document.querySelector('#form');
 let tabs = document.querySelectorAll('.tab');
 let msg = document.querySelector('#msg-col');
@@ -61,7 +62,7 @@ submitBtn.onclick = e => {
 							body: _data
 						});
 						
-						if (sth) {
+						if (sth.status === 200) {
 							blob = await sth.blob();
 							console.log(blob);
 							download.href = URL.createObjectURL(blob);
@@ -78,7 +79,7 @@ submitBtn.onclick = e => {
 							body: _data
 						});
 						
-						if (sth) {
+						if (sth.status === 200) {
 							blob = await sth.json();
 							blob = new Blob([blob.text], { type: "text/plain;charset=utf-8" });
 							downloadDecode.href = URL.createObjectURL(blob);
